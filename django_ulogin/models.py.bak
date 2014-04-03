@@ -12,7 +12,6 @@ from django.conf import settings
 from django.contrib.auth import get_user_model
 from django.utils.timezone import now
 from django_ulogin import settings as s
-import collections
 
 
 AUTH_USER_MODEL = getattr(settings, 'AUTH_USER_MODEL', 'auth.User')
@@ -85,7 +84,7 @@ def create_user(request, ulogin_response):
     # Custom behaviour
     if s.CREATE_USER_CALLBACK is not None:
         callback = import_by_path(s.CREATE_USER_CALLBACK)
-        if isinstance(callback, collections.Callable):
+        if callable(callback):
             return callback(request=request, ulogin_response=ulogin_response)
         raise ImproperlyConfigured("The ULOGIN_CREATE_USER_CALLBACK isn't a callable")
 

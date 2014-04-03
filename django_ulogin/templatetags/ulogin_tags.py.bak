@@ -6,7 +6,7 @@ from django.contrib.auth import REDIRECT_FIELD_NAME as FLD
 from django_ulogin import settings as s
 from django_ulogin.exceptions import SchemeNotFound
 from django.utils.http import urlquote
-import urllib.request, urllib.parse, urllib.error
+import urllib
 import string
 import random
 
